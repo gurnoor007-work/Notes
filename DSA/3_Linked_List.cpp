@@ -6,23 +6,31 @@ struct Node
 {
     int data;
     struct Node *next; // A pointer of struct Node type which points to the next node
+
+    // Constructors
+    Node() : data(0), next(nullptr) {}
+    Node(int x) : data(x), next(nullptr) {}
+    Node(int x, Node *next_node) : data(x), next(next_node) {}
 };
 
 // TRAVERSAL
-void linkedListTraversal(struct Node* ptr){
-    while (true){
+void linkedListTraversal(struct Node *ptr)
+{
+    while (true)
+    {
         cout << format("data: {}\n", ptr->data);
-        if (ptr->next == nullptr) {
+        if (ptr->next == nullptr)
+        {
             break;
         }
         ptr = ptr->next;
     }
-    
 }
 
 // INSERTION
-void insertNode(int data, struct Node* prev, struct Node* after){
-    struct Node* ins;
+void insertNode(int data, struct Node *prev, struct Node *after)
+{
+    struct Node *ins;
     prev->next = ins;
     ins->data = data;
     ins->next = after;
@@ -48,7 +56,9 @@ int main()
     third->next = end;
     end->data = 34451;
     end->next = nullptr;
-    
+
+    Node head(8, second); // Create with constructor
+
     linkedListTraversal(head);
 
     return 0;
